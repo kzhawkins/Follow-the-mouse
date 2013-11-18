@@ -1,0 +1,17 @@
+
+
+
+body {
+	color: #f1783c;
+	background-color: #e6e7e7;
+}
+
+#bikepic {
+  position: absolute;
+  z-index: 1000;
+}
+
+#footer {
+	font-size: 10px small;
+	color:  rgba(30,30,30,0.95)
+}

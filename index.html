@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--Page contains an image of a bike that follows the mouse. When the mouse is clicked once, the image stops following; it begins following when the mouse is clicked again. The page displays the current location of the mouse and whether the image is moving.
+-->
+
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>Follow The Mouse</title>
+ <link href="mouse.css" rel="stylesheet">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ 
+<script>
+ var bikeMoving = function(){
+
+            $("html").mousemove(function(e) {
+                var position = e.pageX + ", " + e.pageY;
+                $("#positionList").html("The bicycle is at " + position);
+                $(".follow").css({"top": e.clientY - 100, "left": e.clientX - 100});
+                $("#movingMssg").html("The bicycle is moving!");
+
+            });
+
+    }
+
+    $(document).ready(function(){
+            var isFollowing = true;
+            bikeMoving();
+
+
+            $("html").click(function(e) {
+                if(isFollowing){
+                    $("html").off('mousemove');
+                    isFollowing = false;
+                    $("#movingMssg").html("The bicycle is NOT moving!");
+                }
+                else{
+                    $("html").on('mousemove',bikeMoving );
+                    isFollowing = true;
+                }
+            });
+
+        });
+</script>  
+ 
+</head>
+<body>
+<h2>Follow The Mouse</h2>
+<br />
+<hr />
+<br />
+<p id="movingMssg"></p>
+<p id="positionList"></p>
+</div>
+ <div id="mouse"></div>
+ <img src="../mouse/bike2.png" class="follow" id="bikepic"/>
+
+
+</body>
+</html>
